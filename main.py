@@ -1,7 +1,7 @@
-#Step 1 
 import random
 from hangman_words import word_list
 from hangman_art import stages, logo
+from replit import clear
 
 chosen_word = list(random.choice(word_list))
 lives = 6
@@ -16,7 +16,11 @@ while len(display) < len(chosen_word):
 
 while "_" in display:
     
-    guess = input("Guess a letter: ").lower()
+    guess = input("Guess a letter: \n").lower()
+    clear()
+    
+    if guess in display:
+        print(f"You have already guess {guess}")
     
     for position in range(len(chosen_word)):
         letter = chosen_word[position]
@@ -24,12 +28,13 @@ while "_" in display:
             display[position] = guess
 
     if guess not in chosen_word:
+        print(f"The letter {guess} is not in the word to guess ")
         lives -= 1
         if lives == 0:
             end_of_game = True
             print("You loose")
     print(f"Number of lives: {lives} \n {stages[lives]}")
-    print(display)
+    print(f"{' '.join(display)}")
 
 end_of_game = True
 print("You win !!!")
