@@ -1,68 +1,15 @@
 #Step 1 
 import random
+from hangman_words import word_list
+from hangman_art import stages, logo
 
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
-
-word_list = ["aardvark", "baboon", "camel"]
 chosen_word = list(random.choice(word_list))
 lives = 6
 end_of_game = False
 display = []
+
+print(logo)
+print("Try to beat the computer.\nYou have 6 lives, good luck!\n")
 
 while len(display) < len(chosen_word):
     display.append("_")
@@ -81,7 +28,8 @@ while "_" in display:
         if lives == 0:
             end_of_game = True
             print("You loose")
-    print(stages[lives])
+    print(f"Number of lives: {lives} \n {stages[lives]}")
+    print(display)
 
 end_of_game = True
 print("You win !!!")
